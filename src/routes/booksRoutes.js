@@ -11,7 +11,7 @@ router.post("/", protectedRoute, async (req, res) => {
     if (!title || !caption || !image || !rating) {
       return res.status(400).json({ message: "Please provide all the fields" });
     }
-    const uploadResponse = cloundinary.uploader.upload(image);
+    const uploadResponse = await cloundinary.uploader.upload(image);
     const image_url = uploadResponse.secure_url;
     const newBook = Book({
       title,
